@@ -1,5 +1,5 @@
 import React from "react";
-import "./SearchInput.css";
+import "./searchinput.css";
 function SearchInput({ setInput }) {
   return (
     <input placeholder="Search..." onKeyUp={(e) => setInput(e.target.value)} />
