@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SearchInput from "../SearchInput";
-import UserList from "../UserList";
-import UserInfo from "../UserInfo";
+import SearchInput from "../searchInput";
+import UserList from "../userList";
+import UserInfo from "../userInfo";
 import "./SearchPage.css";
 
 function SearchPage({ captureInput, specificData, userData }) {

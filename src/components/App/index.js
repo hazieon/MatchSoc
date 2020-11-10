@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import SearchInput from "../SearchInput";
+import SearchInput from "../searchInput";
 import SearchPage from "../SearchPage";
-import UserInfo from "../UserInfo";
-import UserList from "../UserList";
+import UserInfo from "../userInfo";
+import UserList from "../userList";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
@@ -43,18 +43,14 @@ function App() {
 
   return (
     <Router>
-      <div id="page">
-        <nav id="nav">
-          <ul id="links">
-            <li id="search-link">
+      <div id="main-page-container">
+        <nav>
+          <ul>
+            <li>
               <Link to="/">Search</Link>
             </li>
-            {/* <li>
-  <Link to"/"></Link>
-</li> */}
           </ul>
         </nav>
-
         <Switch>
           <Route path="/">
             <SearchPage
