@@ -10,6 +10,11 @@ function App() {
   const [userData, setUserData] = useState([]);
   const [specificData, setSpecificData] = useState([]);
   const [input, setInput] = useState("");
+  const [button, setButton] = useState(false);
+
+  function handleButton() {
+    setButton(!button);
+  }
 
   function captureInput(event) {
     setInput(event.target.value);
@@ -22,11 +27,11 @@ function App() {
     async function getData() {
       let res = await fetch("http://localhost:5000/");
       let data = await res.json();
-      setUserData(data);
-      console.log(data);
+      setUserData(data.payload);
+      console.log(data.payload);
     }
     getData();
-  }, []);
+  }, [button]);
 
   //use effect to get data based on search query
   useEffect(() => {
@@ -35,7 +40,8 @@ function App() {
         // TODO:add {input to url below}
         let res = await fetch(`http://localhost:5000/?search=${input}`);
         let data = await res.json();
-        setSpecificData(data);
+        setSpecificData(data.payload);
+        console.log(data);
       }
       getSpecificData();
     }
@@ -62,6 +68,7 @@ function App() {
               specificData={specificData}
               userData={userData}
             />
+            <button onClick={handleButton}>Get Data</button>
           </Route>
         </Switch>
       </div>
