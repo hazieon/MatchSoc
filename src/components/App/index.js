@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchInput from "../searchInput";
+import SearchPage from "../SearchPage";
 import UserInfo from "../userInfo";
 import UserList from "../userList";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -19,27 +20,21 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div id="page">
         <nav>
           <ul>
             <li>
-              <Link to="/users">Home</Link>
+              <Link to="/">Search</Link>
             </li>
             {/* <li>
-  <Link to"/">Search?</Link>
+  <Link to"/"></Link>
 </li> */}
           </ul>
         </nav>
 
         <Switch>
           <Route path="/">
-            <UserList data={userData} />
-          </Route>
-          <Route path="/search">
-            <SearchInput />
-          </Route>
-          <Route>
-            <UserInfo />
+            <SearchPage />
           </Route>
         </Switch>
       </div>
@@ -48,3 +43,13 @@ function App() {
 }
 
 export default App;
+
+//<UserList data={userData} />
+{
+  /* <Route path="/search">
+<SearchInput />
+</Route>
+<Route>
+<UserInfo />
+</Route> */
+}
