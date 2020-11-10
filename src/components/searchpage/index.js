@@ -1,8 +1,8 @@
 import React from "react";
-import SearchInput from "../SearchInput";
-import UserList from "../UserList";
-import UserInfo from "../UserInfo";
-import "./SearchPage.css";
+import SearchInput from "../searchinput";
+import UserList from "../userlist";
+import UserInfo from "../userinfo";
+import "./searchpage.css";
 function SearchPage({
   setInput,
   userData,
