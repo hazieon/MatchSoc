@@ -6,13 +6,17 @@ function UserList({ userData }) {
   //   //When li clicked, show rest of data for the user.
   // }
   console.log(userData);
-  return null;
-
-  // <ul>
-  //   {userData.map((item) => {
-  //     return <li> {item.firstname}</li>;
-  //   })}
-  // </ul>
+  return (
+    <ul>
+      {userData.map((item) => {
+        return (
+          <li>
+            {item.firstname} {item.surname}
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 export default UserList;
