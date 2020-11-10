@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchInput from "../searchInput";
+import SearchPage from "../SearchPage";
 import UserInfo from "../userInfo";
 import UserList from "../userList";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -7,39 +8,59 @@ import "./App.css";
 
 function App() {
   const [userData, setUserData] = useState([]);
+  const [specificData, setSpecificData] = useState([]);
+  const [input, setInput] = useState("");
 
+  function captureInput(event) {
+    setInput(event.target.value);
+    event.target.value = "";
+  }
+
+  //use effect to GET all the page data
   useEffect(() => {
     async function getData() {
-      let res = await fetch("https://localhost:5000");
+      let res = await fetch("http://localhost:5000/");
       let data = await res.json();
       setUserData(data);
+      console.log(data);
     }
     getData();
   }, []);
 
+  //use effect to get data based on search query
+  useEffect(() => {
+    if (input) {
+      async function getSpecificData() {
+        // TODO:add {input to url below}
+        let res = await fetch(`http://localhost:5000/?search=${input}`);
+        let data = await res.json();
+        setSpecificData(data);
+      }
+      getSpecificData();
+    }
+  }, [input]);
+
   return (
     <Router>
-      <div>
+      <div id="page">
         <nav>
           <ul>
             <li>
-              <Link to="/users">Home</Link>
+              <Link to="/">Search</Link>
             </li>
             {/* <li>
-  <Link to"/">Search?</Link>
+  <Link to"/"></Link>
 </li> */}
           </ul>
         </nav>
 
         <Switch>
           <Route path="/">
-            <UserList data={userData} />
-          </Route>
-          <Route path="/search">
-            <SearchInput />
-          </Route>
-          <Route>
-            <UserInfo />
+            <SearchPage
+              captureInput={captureInput}
+              specificData={specificData}
+              userData={userData}
+            />
           </Route>
         </Switch>
       </div>
@@ -48,3 +69,13 @@ function App() {
 }
 
 export default App;
+
+//<UserList data={userData} />
+{
+  /* <Route path="/search">
+<SearchInput />
+</Route>
+<Route>
+<UserInfo />
+</Route> */
+}
