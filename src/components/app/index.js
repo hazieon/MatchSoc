@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SearchPage from "../SearchPage";
+import SearchPage from "../searchpage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./App.css";
+import "./app.css";
 function App() {
   const [userData, setUserData] = useState([]);
   const [input, setInput] = useState("");
