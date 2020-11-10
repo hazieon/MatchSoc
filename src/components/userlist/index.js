@@ -1,5 +1,5 @@
 import React from "react";
-import "./UserList.css";
+import "./userlist.css";
 function UserList({ userData, returnSingleUserData }) {
   return (
     <ul>
