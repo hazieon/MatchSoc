@@ -1,5 +1,5 @@
 import React from "react";
-import "./UserInfo.css";
+import "./userinfo.css";
 function UserInfo({ userInfoData }) {
   const {
     firstname,
