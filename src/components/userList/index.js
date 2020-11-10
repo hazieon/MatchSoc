@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "./UserList.css";
-
-function UserList({ userData }) {
-  // function handleClick() {
-  //   //When li clicked, show rest of data for the user.
-  // }
-  console.log(userData);
+function UserList({ userData, returnSingleUserData }) {
   return (
     <ul>
-      {userData.map((item) => {
+      {userData.map((value, index) => {
         return (
-          <li>
-            {item.firstname} {item.surname}
+          <li
+            key={value.id}
+            onClick={() => {
+              returnSingleUserData(value);
+            }}
+          >
+            {value.firstname} {value.surname}
           </li>
         );
       })}
     </ul>
   );
 }
-
 export default UserList;
-// onClick={handleClick}>

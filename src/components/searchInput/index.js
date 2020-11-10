@@ -1,8 +1,8 @@
 import React from "react";
 import "./SearchInput.css";
-
-function SearchInput({ captureInput }) {
-  return <input placeholder="Search..." onChange={(e) => captureInput(e)} />;
+function SearchInput({ setInput }) {
+  return (
+    <input placeholder="Search..." onKeyUp={(e) => setInput(e.target.value)} />
+  );
 }
-
 export default SearchInput;

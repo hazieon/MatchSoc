@@ -1,37 +1,21 @@
 import React, { useState, useEffect } from "react";
-import SearchInput from "../SearchInput";
 import SearchPage from "../SearchPage";
-import UserInfo from "../UserInfo";
-import UserList from "../UserList";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
-
 function App() {
   const [userData, setUserData] = useState([]);
-  const [specificData, setSpecificData] = useState([]);
   const [input, setInput] = useState("");
-  const [button, setButton] = useState(false);
-
-  function handleButton() {
-    setButton(!button);
-  }
-
-  function captureInput(event) {
-    setInput(event.target.value);
-    console.log(input);
-    event.target.value = "";
-  }
-
+  const [userInfoData, setUserInfoData] = useState("");
   //use effect to GET all the page data
+
   useEffect(() => {
     async function getData() {
       let res = await fetch("http://localhost:5000/");
       let data = await res.json();
       setUserData(data.payload);
-      console.log(data.payload);
     }
     getData();
-  }, [button]);
+  }, []);
 
   //use effect to get data based on search query
   useEffect(() => {
@@ -40,13 +24,15 @@ function App() {
         // TODO:add {input to url below}
         let res = await fetch(`http://localhost:5000/?search=${input}`);
         let data = await res.json();
-        setSpecificData(data.payload);
-        console.log(data);
+        setUserData(data.payload);
       }
       getSpecificData();
     }
   }, [input]);
 
+  function returnSingleUserData(userObject) {
+    setUserInfoData(userObject);
+  }
   return (
     <Router>
       <div id="main-page-container">
@@ -60,18 +46,15 @@ function App() {
         <Switch>
           <Route path="/">
             <SearchPage
-              captureInput={captureInput}
-              specificData={specificData}
+              setInput={setInput}
               userData={userData}
+              returnSingleUserData={returnSingleUserData}
+              userInfoData={userInfoData}
             />
-            <button onClick={handleButton}>Get Data</button>
           </Route>
         </Switch>
       </div>
     </Router>
   );
 }
-
 export default App;
-
-//<UserList data={userData} />

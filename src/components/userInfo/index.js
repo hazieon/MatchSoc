@@ -1,23 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import "./UserInfo.css";
-
-function UserInfo({ userData }) {
-  console.log(userData);
+function UserInfo({ userInfoData }) {
+  const {
+    firstname,
+    surname,
+    address,
+    phone,
+    email,
+    image,
+    industry,
+    isbootcamper,
+    interests = [],
+  } = userInfoData;
   return (
     <div>
-      <h1>
-        {userData.firstname}
-        {userData.surname}
-      </h1>
-      <p>{userData.address}</p>
-      <p>{userData.email}</p>
-      <p>{userData.industry}</p>
-      <p>{userData.phone}</p>
-
-      <img src={userData.image} />
+      <h3>
+        {firstname} {surname}
+      </h3>
+      <div>
+        <p>address: {address}</p>
+        <p>phone: {phone}</p>
+        <p>email: {email}</p>
+        <p>industry: {industry}</p>
+        <p>role: {isbootcamper ? "bootcamper" : "mentor"}</p>
+        <ul>
+          interests:
+          {interests.map((value) => {
+            return <li>{value}</li>;
+          })}
+        </ul>
+      </div>
+      <img src={image} alt=""></img>
     </div>
   );
 }
-
 export default UserInfo;
-//////////

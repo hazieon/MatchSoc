@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchInput from "../SearchInput";
 import UserList from "../UserList";
 import UserInfo from "../UserInfo";
 import "./SearchPage.css";
-
-function SearchPage({ captureInput, specificData, userData }) {
+function SearchPage({
+  setInput,
+  userData,
+  returnSingleUserData,
+  userInfoData,
+}) {
   return (
     <div className="search-page">
       <header>
@@ -12,15 +16,17 @@ function SearchPage({ captureInput, specificData, userData }) {
       </header>
       <section className="main-section">
         <article className="panel-left">
-          <SearchInput captureInput={captureInput} />
-          <UserList userData={userData} />
+          <SearchInput setInput={setInput} />
+          <UserList
+            userData={userData}
+            returnSingleUserData={returnSingleUserData}
+          />
         </article>
         <article className="panel-right">
-          <UserInfo specificData={specificData} userData={userData} />
+          <UserInfo userInfoData={userInfoData} />
         </article>
       </section>
     </div>
   );
 }
-
 export default SearchPage;
