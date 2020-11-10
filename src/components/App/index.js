@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import SearchInput from "../searchInput";
+import SearchInput from "../SearchInput";
 import SearchPage from "../SearchPage";
-import UserInfo from "../userInfo";
-import UserList from "../userList";
+import UserInfo from "../UserInfo";
+import UserList from "../UserList";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 

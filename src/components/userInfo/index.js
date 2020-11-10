@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import "./UserInfo.css";
 
 function UserInfo({ userData }) {
-  console.log(userData.image);
+  console.log(userData);
   return (
     <div>
       <h1>
-        {userData[0].firstname}
-        {userData[0].surname}
+        {userData.firstname}
+        {userData.surname}
       </h1>
-      <p>{userData[0].address}</p>
-      <p>{userData[0].email}</p>
-      <p>{userData[0].industry}</p>
-      <p>{userData[0].phone}</p>
+      <p>{userData.address}</p>
+      <p>{userData.email}</p>
+      <p>{userData.industry}</p>
+      <p>{userData.phone}</p>
 
-      <img src={userData[0].image} />
+      <img src={userData.image} />
     </div>
   );
 }
