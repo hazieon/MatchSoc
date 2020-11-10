@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./UserInfo.css";
 /*<div>
 <div>
 <div>

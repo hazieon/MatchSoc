@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import SearchInput from "../searchInput";
+import SearchInput from "../SearchInput";
 import SearchPage from "../SearchPage";
-import UserInfo from "../userInfo";
-import UserList from "../userList";
+import UserInfo from "../UserInfo";
+import UserList from "../UserList";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
@@ -13,6 +13,7 @@ function App() {
 
   function captureInput(event) {
     setInput(event.target.value);
+    console.log(input);
     event.target.value = "";
   }
 
@@ -43,9 +44,9 @@ function App() {
   return (
     <Router>
       <div id="page">
-        <nav>
-          <ul>
-            <li>
+        <nav id="nav">
+          <ul id="links">
+            <li id="search-link">
               <Link to="/">Search</Link>
             </li>
             {/* <li>
@@ -71,11 +72,3 @@ function App() {
 export default App;
 
 //<UserList data={userData} />
-{
-  /* <Route path="/search">
-<SearchInput />
-</Route>
-<Route>
-<UserInfo />
-</Route> */
-}

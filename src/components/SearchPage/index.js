@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import SearchInput from "../searchInput";
-import UserList from "../userList";
-import UserInfo from "../userInfo";
+import SearchInput from "../SearchInput";
+import UserList from "../UserList";
+import UserInfo from "../UserInfo";
+import "./SearchPage.css";
+
 function SearchPage({ captureInput, specificData, userData }) {
   return (
     <div className="search-page">
       <header>
         <h1>Site Name</h1>
       </header>
-      <section>
+      <section className="main-section">
         <article className="panel-left">
           <SearchInput captureInput={captureInput} />
           <UserList userData={userData} />
