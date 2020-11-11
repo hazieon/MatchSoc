@@ -99,13 +99,13 @@ function App() {
         </nav>
         <Switch>
           <Route path="/compare">
-            <ComparePage
+            <ComparePage />
               bootcamperData={bootcamperData}
               mentorData={mentorData}
               returnSingleUserData={returnCompareSingleUserData}
               bootcamperComparePanelData={bootcamperComparePanelData}
               mentorComparePanelData={mentorComparePanelData}
-            />
+            </Route>
           <Route path="/adduser">
             <AddUserPage />
           </Route>
