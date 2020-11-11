@@ -3,7 +3,7 @@ import "./userlist.css";
 function UserList({ userData, returnSingleUserData }) {
   return (
     <ul>
-      {userData.map((value, index) => {
+      {userData.map((value) => {
         return (
           <li
             key={value.id}

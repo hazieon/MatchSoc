@@ -12,25 +12,32 @@ function UserInfo({ userInfoData }) {
     isbootcamper,
     interests = [],
   } = userInfoData;
+
   return (
-    <div>
-      <h3>
+    <div className="info-container">
+      <h2>
         {firstname} {surname}
-      </h3>
-      <div>
-        <p>address: {address}</p>
-        <p>phone: {phone}</p>
-        <p>email: {email}</p>
-        <p>industry: {industry}</p>
-        <p>role: {isbootcamper ? "bootcamper" : "mentor"}</p>
-        <ul>
-          interests:
-          {interests.map((value) => {
-            return <li>{value}</li>;
-          })}
-        </ul>
-      </div>
-      <img src={image} alt=""></img>
+      </h2>
+      <p className="info-bootcamper-tag" style={isbootcamper ? { backgroundColor: '#ffe26a' } : { backgroundColor: '#ea8696' }}>{isbootcamper ? "bootcamper" : "mentor"}</p>
+      <section>
+          <div className='image-container'>
+            <img src={image} alt=""></img>
+          </div>
+          <div>
+            <p><span className="info-text">Address:</span> {address}</p>
+            <p><span className="info-text">Phone:</span> {phone}</p>
+            <p><span className="info-text">Email:</span> {email} <a href={`mailto:${email}`}>📧</a></p>
+            <p><span className="info-text">Industry:</span> {industry}</p>
+            <div className='info-interests'>
+              <p className="info-text">Interests:</p>
+              <ul>
+                {interests.map((value, index) => {
+                  return <li key={index}>{value}</li>;
+                })}
+              </ul>
+            </div>
+          </div>
+      </section>
     </div>
   );
 }

@@ -1,3 +1,64 @@
-img {
-  width: 200px;
+.image-container {
+  color: transparent;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 15px;
+  margin-right: 35px;
+}
+
+section img {
+  width: 100%;
+}
+
+.info-container section {
+  display: flex;
+}
+
+.info-container h2 {
+  text-transform: capitalize;
+  margin-top: 28px;
+}
+
+.info-text {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: lowercase;
+  background-color: #4A90E2;
+  padding: 3px 11px;
+  border-radius: 15px;
+  color: #fff;
+  margin: 5px 10px 5px 0px;
+  height: 22px;
+  width: 70px;
+  text-align: center;
+}
+
+div p {
+  margin-bottom: 7px;
+}
+
+.info-bootcamper-tag {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: lowercase;
+  background-color: #ffe26a;
+  padding: 3px 11px;
+  border-radius: 15px;
+  margin: 15px 0px;
+}
+
+.info-interests {
+  width: 300px;
+  display: flex;
+}
+
+.info-interests ul {
+  margin-left: 5px;
+}
+
+div p a {
+  text-decoration: none;
 }
