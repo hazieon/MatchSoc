@@ -7,7 +7,7 @@ function App() {
   const [userData, setUserData] = useState([]);
   const [input, setInput] = useState(null);
   const [userInfoData, setUserInfoData] = useState("");
-  
+  const [reloadPageData, setReloadPageData] = useState(true)
   //use effect to GET all the page data
   useEffect(() => {
     async function getData() {
@@ -17,7 +17,8 @@ function App() {
       setUserInfoData(data.payload[0])
     }
     getData();
-  }, []);
+    setReloadPageData(false)
+  }, [reloadPageData]);
 
   //use effect to get data based on search query
   useEffect(() => {
@@ -52,7 +53,7 @@ function App() {
         </nav>
         <Switch>
           <Route path="/adduser">
-            <AddUserPage />
+            <AddUserPage setReloadPageData={setReloadPageData}/>
           </Route>
           <Route path="/">
             <SearchPage
