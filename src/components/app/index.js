@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchPage from "../searchpage";
+import AddUserPage from "../adduserpage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./app.css";
 function App() {
@@ -44,9 +45,15 @@ function App() {
             <li>
               <Link to="/">Search</Link>
             </li>
+            <li>
+              <Link to="/adduser">Add User</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
+          <Route path="/adduser">
+            <AddUserPage />
+          </Route>
           <Route path="/">
             <SearchPage
               setInput={setInput}
