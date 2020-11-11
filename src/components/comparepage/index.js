@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import UserList from "../userlist";
 import UserInfo from "../userinfo";
+import './comparepage.css'
 
 function ComparePage({
   bootcamperData,
@@ -9,19 +10,8 @@ function ComparePage({
   bootcamperComparePanelData,
   mentorComparePanelData,
 }) {
-  const [compareListData, setCompareListData] = useState([]);
+  const [compareListData, setCompareListData] = useState([...mentorData]);
   const [displayUsers, setDisplayUsers] = useState(true);
-
-  //   function clickBootcampers(e) {
-  //     console.log("bootcampers true");
-  //     setBootcamperButton(!bootcamperButton);
-  //     // setDisplayUsers(true);
-  //   }
-
-  //   function clickMentors(e) {
-  //     console.log("mentors true");
-  //     setMentorButton(!mentorButton);
-  //   }
 
   function switchData(data) {
     setCompareListData(data);
@@ -36,14 +26,7 @@ function ComparePage({
       <section className="main-section">
         <article className="panel-left">
           <button
-            onClick={() => {
-              displayUsers
-                ? switchData(bootcamperData)
-                : switchData(mentorData);
-            }}
-          >
-            Switch
-          </button>
+            onClick={() => { displayUsers ? switchData(bootcamperData) : switchData(mentorData);}}>{displayUsers ? 'Show Bootcampers' : 'Show Mentors'}</button>
           <UserList
             userData={compareListData}
             returnSingleUserData={returnSingleUserData}
