@@ -5,7 +5,7 @@ import InterestInput from '../interestinput'
 
 function AddUserPage({ setReloadPageData }) {
     const [inputField, setInputField] = useState([])
-    const { register, handleSubmit, errors } = useForm()
+    const { register, handleSubmit, errors, reset } = useForm()
 
     function cleanUserData(data) {
         let userDataAsArray = Object.entries(data)
@@ -41,6 +41,7 @@ function AddUserPage({ setReloadPageData }) {
             body: JSON.stringify(cleanUserData(data))
         })
         setReloadPageData(true)
+        reset()
         return response
     }
 
