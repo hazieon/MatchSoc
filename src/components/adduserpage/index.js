@@ -27,7 +27,7 @@ function AddUserPage() {
             image: image, 
             isbootcamper: isbootcamper, 
             industry: industry, 
-            interest: interest 
+            interests: interest 
         }
         return userData
     }
