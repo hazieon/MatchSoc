@@ -10,13 +10,8 @@ function App() {
   const [userInfoData, setUserInfoData] = useState("");
   const [bootcamperData, setBootcamperData] = useState([]);
   const [mentorData, setMentorData] = useState([]);
-  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState(
-    ""
-  );
+  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState("");
   const [mentorComparePanelData, setMentorComparePanelData] = useState("");
-
-  // const [bootcamperButton, setBootcamperButton] = useState(false);
-  // const [mentorButton, setMentorButton] = useState(false);
 
   //use effect to GET all the page data
   useEffect(() => {
@@ -46,8 +41,7 @@ function App() {
       let res = await fetch("http://localhost:5000/bootcampers");
       let data = await res.json();
       setBootcamperData(data.payload);
-      //setBootcamperButton(false);
-      console.log(data.payload);
+      setBootcamperComparePanelData(data.payload[0])
     }
     getBootcamperData();
   }, []);
@@ -57,14 +51,13 @@ function App() {
       let res = await fetch("http://localhost:5000/mentors");
       let data = await res.json();
       setMentorData(data.payload);
-      // setMentorButton(false);
+      setMentorComparePanelData(data.payload[0])
     }
     getMentorData();
   }, []);
 
   function returnSingleUserData(userObject) {
     setUserInfoData(userObject);
-    console.log(userObject.isbootcamper);
   }
 
   function returnCompareSingleUserData(userObject) {
@@ -99,13 +92,14 @@ function App() {
         </nav>
         <Switch>
           <Route path="/compare">
-            <ComparePage />
+            <ComparePage 
               bootcamperData={bootcamperData}
               mentorData={mentorData}
               returnSingleUserData={returnCompareSingleUserData}
               bootcamperComparePanelData={bootcamperComparePanelData}
               mentorComparePanelData={mentorComparePanelData}
-            </Route>
+              />
+          </Route>
           <Route path="/adduser">
             <AddUserPage />
           </Route>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./userlist.css";
 function UserList({ userData, returnSingleUserData }) {
-  console.log(userData);
   return (
     <ul>
       {userData.map((value) => {
