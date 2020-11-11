@@ -3,9 +3,9 @@ import './adduserpage.css'
 import { useForm } from 'react-hook-form'
 import InterestInput from '../interestinput'
 
-function AddUserPage() {
+function AddUserPage({ setReloadPageData }) {
     const [inputField, setInputField] = useState([])
-    const { register, handleSubmit, errors } = useForm()
+    const { register, handleSubmit, errors, reset } = useForm()
 
     function cleanUserData(data) {
         let userDataAsArray = Object.entries(data)
@@ -18,16 +18,16 @@ function AddUserPage() {
         }
 
         const { firstname, surname, address, email, phone, image, isbootcamper, industry } = data
-        const userData = { 
-            firstname: firstname, 
-            surname: surname, 
-            address: address, 
-            email: email, 
-            phone: phone, 
-            image: image, 
-            isbootcamper: isbootcamper, 
-            industry: industry, 
-            interests: interest 
+        const userData = {
+            firstname: firstname,
+            surname: surname,
+            address: address,
+            email: email,
+            phone: phone,
+            image: image,
+            isbootcamper: isbootcamper,
+            industry: industry,
+            interests: interest
         }
         return userData
     }
@@ -40,6 +40,8 @@ function AddUserPage() {
             },
             body: JSON.stringify(cleanUserData(data))
         })
+        setReloadPageData(true)
+        reset()
         return response
     }
 
