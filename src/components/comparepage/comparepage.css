@@ -1,0 +1,15 @@
+.main-section .panel-left button {
+    margin-top: 35px;
+    margin-bottom: 10px;
+    display: block;
+    background-color: #4A90E2;
+    color: #fff;
+    font-weight: bold;
+    width: 270px;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: capitalize;
+    border: none;
+}
