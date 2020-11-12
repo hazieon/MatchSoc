@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchPage from "../searchpage";
 import ComparePage from "../comparepage";
 import AddUserPage from "../adduserpage";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./app.css";
 function App() {
@@ -28,6 +29,7 @@ function App() {
     }
     getData();
     // setReloadPageData(false);
+
   }, [reloadPageData]);
 
   //use effect to get data based on search query
@@ -63,6 +65,18 @@ function App() {
     getMentorData();
     setReloadPageData(false);
   }, [reloadPageData]);
+
+  async function deleteUser(id) {
+    console.log(id);
+    let res = await fetch(`http://localhost:5000/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    let data = await res.json();
+    console.log(data);
+    setReloadPageData(true);
+  }
 
   function returnSingleUserData(userObject) {
     setUserInfoData(userObject);
@@ -118,6 +132,7 @@ function App() {
               userData={userData}
               returnSingleUserData={returnSingleUserData}
               userInfoData={userInfoData}
+              deleteUser={deleteUser}
             />
           </Route>
         </Switch>
