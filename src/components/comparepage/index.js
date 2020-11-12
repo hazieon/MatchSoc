@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import UserList from "../userlist";
 import UserInfo from "../userinfo";
-import MatchScore from "../matchscore"
-import './comparepage.css'
+import MatchScore from "../matchscore";
+import "./comparepage.css";
 
 function ComparePage({
   bootcamperData,
@@ -10,6 +10,7 @@ function ComparePage({
   returnSingleUserData,
   bootcamperComparePanelData,
   mentorComparePanelData,
+  setReloadPageData,
 }) {
   const [compareListData, setCompareListData] = useState([...mentorData]);
   const [displayUsers, setDisplayUsers] = useState(true);
@@ -20,37 +21,40 @@ function ComparePage({
   }
 
   function compareUsers(bootcamper, mentor) {
-    let score = 0
-    let industryMatch = false
-    let matchedInterests = []
+    let score = 0;
+    let industryMatch = false;
+    let matchedInterests = [];
 
     if (bootcamper.industry === mentor.industry) {
-      industryMatch = true
-      score += 40
+      industryMatch = true;
+      score += 40;
     }
 
     bootcamper.interests.map((bootcamperInterest) => {
       mentor.interests.map((mentorInterest) => {
         if (bootcamperInterest === mentorInterest) {
-          score += 20
-          matchedInterests.push(bootcamperInterest)
+          score += 20;
+          matchedInterests.push(bootcamperInterest);
         }
-      })
-    })
+      });
+    });
 
-    if (matchedInterests.length === bootcamper.interests.length && matchedInterests.length === mentor.interests.length) {
-      score = 100
-      return score
+    if (
+      matchedInterests.length === bootcamper.interests.length &&
+      matchedInterests.length === mentor.interests.length
+    ) {
+      score = 100;
+      return score;
     } else if (matchedInterests.length >= 4) {
-      score = 100
-      return score
+      score = 100;
+      return score;
     } else if (industryMatch === true && matchedInterests.length >= 2) {
-      score = 100
-      return score
+      score = 100;
+      return score;
     } else {
       if (score * 1.25 >= 100) {
-        return 100
-      } else return score * 1.25
+        return 100;
+      } else return score * 1.25;
     }
   }
 
@@ -62,7 +66,14 @@ function ComparePage({
       <section className="page-main-section">
         <div className="compare-panel-left">
           <button
-            onClick={() => { displayUsers ? switchData(bootcamperData) : switchData(mentorData); }}>{displayUsers ? 'Show Bootcampers' : 'Show Mentors'}</button>
+            onClick={() => {
+              displayUsers
+                ? switchData(bootcamperData)
+                : switchData(mentorData);
+            }}
+          >
+            {displayUsers ? "Show Bootcampers" : "Show Mentors"}
+          </button>
           <UserList
             userData={compareListData}
             returnSingleUserData={returnSingleUserData}
@@ -75,7 +86,12 @@ function ComparePage({
           <UserInfo userInfoData={mentorComparePanelData} />
         </article>
         <article>
-          <MatchScore compareUsers={compareUsers} bootcamperComparePanelData={bootcamperComparePanelData} mentorComparePanelData={mentorComparePanelData}/>
+          <MatchScore
+            compareUsers={compareUsers}
+            bootcamperComparePanelData={bootcamperComparePanelData}
+            mentorComparePanelData={mentorComparePanelData}
+            setReloadPageData={setReloadPageData}
+          />
         </article>
       </section>
     </div>

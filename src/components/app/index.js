@@ -28,7 +28,8 @@ function App() {
       setUserInfoData(data.payload[0]);
     }
     getData();
-    setReloadPageData(false);
+    // setReloadPageData(false);
+
   }, [reloadPageData]);
 
   //use effect to get data based on search query
@@ -51,7 +52,7 @@ function App() {
       setBootcamperComparePanelData(data.payload[0]);
     }
     getBootcamperData();
-    setReloadPageData(false)
+    // setReloadPageData(false);
   }, [reloadPageData]);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ function App() {
       setMentorComparePanelData(data.payload[0]);
     }
     getMentorData();
-    setReloadPageData(false)
+    setReloadPageData(false);
   }, [reloadPageData]);
 
   async function deleteUser(id) {
@@ -119,6 +120,7 @@ function App() {
               returnSingleUserData={returnCompareSingleUserData}
               bootcamperComparePanelData={bootcamperComparePanelData}
               mentorComparePanelData={mentorComparePanelData}
+              setReloadPageData={setReloadPageData}
             />
           </Route>
           <Route path="/adduser">
