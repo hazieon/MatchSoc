@@ -9,13 +9,14 @@ function App() {
   const [input, setInput] = useState(null);
   const [userInfoData, setUserInfoData] = useState("");
 
-  const [reloadPageData, setReloadPageData] = useState(true)
+  const [reloadPageData, setReloadPageData] = useState(true);
 
   const [bootcamperData, setBootcamperData] = useState([]);
   const [mentorData, setMentorData] = useState([]);
-  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState("");
+  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState(
+    ""
+  );
   const [mentorComparePanelData, setMentorComparePanelData] = useState("");
-
 
   //use effect to GET all the page data
   useEffect(() => {
@@ -26,7 +27,7 @@ function App() {
       setUserInfoData(data.payload[0]);
     }
     getData();
-    setReloadPageData(false)
+    // setReloadPageData(false);
   }, [reloadPageData]);
 
   //use effect to get data based on search query
@@ -46,10 +47,10 @@ function App() {
       let res = await fetch("http://localhost:5000/bootcampers");
       let data = await res.json();
       setBootcamperData(data.payload);
-      setBootcamperComparePanelData(data.payload[0])
+      setBootcamperComparePanelData(data.payload[0]);
     }
     getBootcamperData();
-    setReloadPageData(false)
+    // setReloadPageData(false);
   }, [reloadPageData]);
 
   useEffect(() => {
@@ -57,10 +58,10 @@ function App() {
       let res = await fetch("http://localhost:5000/mentors");
       let data = await res.json();
       setMentorData(data.payload);
-      setMentorComparePanelData(data.payload[0])
+      setMentorComparePanelData(data.payload[0]);
     }
     getMentorData();
-    setReloadPageData(false)
+    setReloadPageData(false);
   }, [reloadPageData]);
 
   function returnSingleUserData(userObject) {
@@ -105,6 +106,7 @@ function App() {
               returnSingleUserData={returnCompareSingleUserData}
               bootcamperComparePanelData={bootcamperComparePanelData}
               mentorComparePanelData={mentorComparePanelData}
+              setReloadPageData={setReloadPageData}
             />
           </Route>
           <Route path="/adduser">
