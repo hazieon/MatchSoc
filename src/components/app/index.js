@@ -49,7 +49,8 @@ function App() {
       setBootcamperComparePanelData(data.payload[0])
     }
     getBootcamperData();
-  }, []);
+    setReloadPageData(false)
+  }, [reloadPageData]);
 
   useEffect(() => {
     async function getMentorData() {
@@ -59,7 +60,8 @@ function App() {
       setMentorComparePanelData(data.payload[0])
     }
     getMentorData();
-  }, []);
+    setReloadPageData(false)
+  }, [reloadPageData]);
 
   function returnSingleUserData(userObject) {
     setUserInfoData(userObject);
