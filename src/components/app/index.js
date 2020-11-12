@@ -9,13 +9,14 @@ function App() {
   const [input, setInput] = useState(null);
   const [userInfoData, setUserInfoData] = useState("");
 
-  const [reloadPageData, setReloadPageData] = useState(true)
+  const [reloadPageData, setReloadPageData] = useState(true);
 
   const [bootcamperData, setBootcamperData] = useState([]);
   const [mentorData, setMentorData] = useState([]);
-  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState("");
+  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState(
+    ""
+  );
   const [mentorComparePanelData, setMentorComparePanelData] = useState("");
-
 
   //use effect to GET all the page data
   useEffect(() => {
@@ -26,7 +27,7 @@ function App() {
       setUserInfoData(data.payload[0]);
     }
     getData();
-    setReloadPageData(false)
+    setReloadPageData(false);
   }, [reloadPageData]);
 
   //use effect to get data based on search query
@@ -46,7 +47,7 @@ function App() {
       let res = await fetch("http://localhost:5000/bootcampers");
       let data = await res.json();
       setBootcamperData(data.payload);
-      setBootcamperComparePanelData(data.payload[0])
+      setBootcamperComparePanelData(data.payload[0]);
     }
     getBootcamperData();
   }, []);
@@ -56,7 +57,7 @@ function App() {
       let res = await fetch("http://localhost:5000/mentors");
       let data = await res.json();
       setMentorData(data.payload);
-      setMentorComparePanelData(data.payload[0])
+      setMentorComparePanelData(data.payload[0]);
     }
     getMentorData();
   }, []);
@@ -72,6 +73,21 @@ function App() {
       setMentorComparePanelData(userObject);
     }
   }
+
+  async function userUpdate(id, text, heading) {}
+
+  // async function updateScores(event) {
+  //   event.preventDefault();
+  //   const formData = gatherUpdateForm();
+  //   const response = await fetch(`/socscores/${formData.id}`, {
+  //     method: "PATCH",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(formData),
+  //   });
+  //   const data = await response.json();
+  //   console.log(data);
+  //   await getScores();
+  // }
 
   return (
     <Router>
@@ -114,6 +130,7 @@ function App() {
               userData={userData}
               returnSingleUserData={returnSingleUserData}
               userInfoData={userInfoData}
+              userUpdate={userUpdate}
             />
           </Route>
         </Switch>

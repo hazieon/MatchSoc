@@ -2,6 +2,7 @@ import React from "react";
 import SearchInput from "../searchinput";
 import UserList from "../userlist";
 import UserInfo from "../userinfo";
+import UserInfoUpdate from "../userinfoupdate/index";
 import "./searchpage.css";
 
 function SearchPage({
@@ -9,8 +10,8 @@ function SearchPage({
   userData,
   returnSingleUserData,
   userInfoData,
+  userUpdate,
 }) {
-  
   return (
     <div className="sub-page-container">
       <header>
@@ -25,7 +26,7 @@ function SearchPage({
           />
         </article>
         <article className="search-panel-right">
-          <UserInfo userInfoData={userInfoData} />
+          <UserInfoUpdate userInfoData={userInfoData} userUpdate={userUpdate} />
         </article>
       </section>
     </div>
