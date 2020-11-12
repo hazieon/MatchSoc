@@ -1,6 +1,5 @@
-.main-section .panel-left button {
-    margin-top: 35px;
-    margin-bottom: 10px;
+.compare-panel-left button {
+    margin-bottom: 25px;
     display: block;
     background-color: #4A90E2;
     color: #fff;
@@ -12,4 +11,23 @@
     cursor: pointer;
     text-transform: capitalize;
     border: none;
+    font-size: 15px;
+    outline: none;
+}
+
+.compare-panel-left button:hover {
+    background-color: #67a6ee;
+}
+
+.compare-panel-left {
+    min-width: 350px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+hr {
+ border: 1px solid #4A90E2;   
+ margin-top: 10px;
 }

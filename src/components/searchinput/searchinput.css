@@ -1,9 +1,8 @@
-.panel-left input {
+#search-input-component {
     background-color: #fff;
     width: 250px;
     border: 1px solid #eee;
     padding: 10px;
     border-radius: 20px;
     outline: none;
-    margin-top: 35px;
 }
