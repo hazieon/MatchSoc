@@ -9,7 +9,6 @@ function App() {
   const [userData, setUserData] = useState([]);
   const [input, setInput] = useState(null);
   const [userInfoData, setUserInfoData] = useState("");
-  const [deleteUser, setDeleteUser] = useState("");
 
   const [reloadPageData, setReloadPageData] = useState(true);
 
@@ -64,15 +63,17 @@ function App() {
     getMentorData();
   }, []);
 
-  useEffect(() => {
-    async function removeUser() {
-      let res = await fetch("http://localhost:5000/:id", { METHOD: "DELETE" });
-      let data = await res.json();
-      setDeleteUser(data);
-      console.log(data);
-    }
-    removeUser();
-  }, []);
+  async function deleteUser(id) {
+    console.log(id);
+    let res = await fetch(`http://localhost:5000/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    let data = await res.json();
+    console.log(data);
+    setReloadPageData(true);
+  }
 
   function returnSingleUserData(userObject) {
     setUserInfoData(userObject);

@@ -15,7 +15,13 @@ function UserListDelete({ userData, returnSingleUserData, deleteUser }) {
             >
               {value.firstname} {value.surname}
             </li>
-            <button onClick={deleteUser}>X</button>
+            <button
+              onClick={() => {
+                deleteUser(value.id);
+              }}
+            >
+              X
+            </button>
           </div>
         );
       })}
