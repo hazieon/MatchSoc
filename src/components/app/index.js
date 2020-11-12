@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchPage from "../searchpage";
 import ComparePage from "../comparepage";
 import AddUserPage from "../adduserpage";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./app.css";
 function App() {
@@ -9,13 +10,14 @@ function App() {
   const [input, setInput] = useState(null);
   const [userInfoData, setUserInfoData] = useState("");
 
-  const [reloadPageData, setReloadPageData] = useState(true)
+  const [reloadPageData, setReloadPageData] = useState(true);
 
   const [bootcamperData, setBootcamperData] = useState([]);
   const [mentorData, setMentorData] = useState([]);
-  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState("");
+  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState(
+    ""
+  );
   const [mentorComparePanelData, setMentorComparePanelData] = useState("");
-
 
   //use effect to GET all the page data
   useEffect(() => {
@@ -26,7 +28,7 @@ function App() {
       setUserInfoData(data.payload[0]);
     }
     getData();
-    setReloadPageData(false)
+    setReloadPageData(false);
   }, [reloadPageData]);
 
   //use effect to get data based on search query
@@ -46,7 +48,7 @@ function App() {
       let res = await fetch("http://localhost:5000/bootcampers");
       let data = await res.json();
       setBootcamperData(data.payload);
-      setBootcamperComparePanelData(data.payload[0])
+      setBootcamperComparePanelData(data.payload[0]);
     }
     getBootcamperData();
     setReloadPageData(false)
@@ -57,11 +59,23 @@ function App() {
       let res = await fetch("http://localhost:5000/mentors");
       let data = await res.json();
       setMentorData(data.payload);
-      setMentorComparePanelData(data.payload[0])
+      setMentorComparePanelData(data.payload[0]);
     }
     getMentorData();
     setReloadPageData(false)
   }, [reloadPageData]);
+
+  async function deleteUser(id) {
+    console.log(id);
+    let res = await fetch(`http://localhost:5000/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    let data = await res.json();
+    console.log(data);
+    setReloadPageData(true);
+  }
 
   function returnSingleUserData(userObject) {
     setUserInfoData(userObject);
@@ -116,6 +130,7 @@ function App() {
               userData={userData}
               returnSingleUserData={returnSingleUserData}
               userInfoData={userInfoData}
+              deleteUser={deleteUser}
             />
           </Route>
         </Switch>
