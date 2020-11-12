@@ -85,28 +85,28 @@ function App() {
           />
           <ul>
             <li>
-              <Link to="/compare">Compare</Link>
-            </li>
-            <li>
               <Link to="/">Search</Link>
             </li>
             <li>
               <Link to="/adduser">Add User</Link>
             </li>
+            <li>
+              <Link to="/compare">Compare</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
           <Route path="/compare">
-            <ComparePage 
+            <ComparePage
               bootcamperData={bootcamperData}
               mentorData={mentorData}
               returnSingleUserData={returnCompareSingleUserData}
               bootcamperComparePanelData={bootcamperComparePanelData}
               mentorComparePanelData={mentorComparePanelData}
-              />
+            />
           </Route>
           <Route path="/adduser">
-            <AddUserPage setReloadPageData={setReloadPageData}/>
+            <AddUserPage setReloadPageData={setReloadPageData} />
           </Route>
           <Route path="/">
             <SearchPage

@@ -54,3 +54,25 @@ nav ul li a:hover {
 nav ul li a:active {
   background-color: #365b85;
 }
+
+.sub-page-title {
+  margin-top: 25px;
+  margin-right: 20px;
+}
+
+.sub-page-container {
+  width: 100%;
+}
+
+header {
+  height: 100px;
+  background-color: #4A90E2;
+  display: flex;
+  justify-content: flex-end;
+  color: #fff;
+  margin-bottom: 35px;
+}
+
+.page-main-section {
+  display: flex;
+}

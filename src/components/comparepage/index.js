@@ -19,25 +19,23 @@ function ComparePage({
   }
 
   return (
-    <div id="compare-page">
+    <div className="sub-page-container">
       <header>
-        <h1 id="compare-page-logo">People Compare</h1>
+        <h1 className="sub-page-title">Compare</h1>
       </header>
-      <section className="main-section">
-        <article className="panel-left">
+      <section className="page-main-section">
+        <div className="compare-panel-left">
           <button
             onClick={() => { displayUsers ? switchData(bootcamperData) : switchData(mentorData);}}>{displayUsers ? 'Show Bootcampers' : 'Show Mentors'}</button>
           <UserList
             userData={compareListData}
             returnSingleUserData={returnSingleUserData}
           />
-        </article>
+        </div>
 
-        <article className="left-bootcamper-panel">
+        <article className="compare-panel-right">
           <UserInfo userInfoData={bootcamperComparePanelData} />
-        </article>
-
-        <article className="right-mentor-panel">
+          <hr />
           <UserInfo userInfoData={mentorComparePanelData} />
         </article>
       </section>

@@ -1,3 +1,85 @@
-section form label input {
-    display: block;
+section form {
+    width: 920px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 35px;
+    margin-left: 35px;
+    justify-content: space-between
+}
+
+section form label {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: lowercase;
+    background-color: #777;
+    padding: 3px 11px;
+    border-radius: 15px;
+    color: #fff;
+    margin: 0px 20px 35px 0px;
+    height: 22px;
+    width: 100px;
+    text-align: center;
+}
+
+section form input {
+    background-color: #fff;
+    width: 500px;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+}
+
+section form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+section form button, section form input[type="submit"] {
+    margin: 0px 20px 10px 0px;
+    background-color: #4A90E2;
+    color: #fff;
+    font-weight: bold;
+    width: 200px;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: capitalize;
+    border: none;
+    font-size: 15px;
+    outline: none;
+}
+
+#page-main-section-adduser {
+    flex-direction: column;
+}
+
+#form-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+#form-buttons button:nth-child(3) {
+    background-color: #ea8696;
+}
+
+.form-interest-field input {
+    width: 155px;
+}
+
+.form-interest-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 664px;
+}
+
+#page-main-section-adduser p {
+    font-weight: bold;
+    font-size: 20px;
+    width: 664px;
+    margin-top: 35px;
+    margin-left: 35px;
 }

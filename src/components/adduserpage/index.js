@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './adduserpage.css'
 import { useForm } from 'react-hook-form'
-import InterestInput from '../interestinput'
 
 function AddUserPage({ setReloadPageData }) {
     const [inputField, setInputField] = useState([])
@@ -47,31 +46,40 @@ function AddUserPage({ setReloadPageData }) {
 
     function addInterestField() {
         const interestFieldCount = inputField.length
-        setInputField([...inputField, <label key={`inputkey-${interestFieldCount}`}>Interest: <input type="text" name={`interest${interestFieldCount}`} ref={register} /></label>])
+        setInputField([...inputField, <div key={`inputkey-${interestFieldCount}`}><label>Interest:</label><input type="text" name={`interest${interestFieldCount}`} ref={register} /></div>])
     }
 
     return (
-        <div id="search-page">
+        <div className="sub-page-container">
             <header>
-                <h1 id="search-page-logo">Add User</h1>
+                <h1 className="sub-page-title">Add User</h1>
             </header>
-            <section className="main-section">
+            <section id="page-main-section-adduser" className="page-main-section">
+                <p>Add new bootcampers and mentors here. Enter individual interests into different fields by using the 'add additional interest' button at the bottom of this form.</p>
                 <form onSubmit={handleSubmit(submitNewUserData)}>
-                    <label>First name: <input type="text" name="firstname" ref={register} /></label>
-                    <label>Last name: <input type="text" name="surname" ref={register} /></label>
-                    <label>Address: <input type="text" name="address" ref={register} /></label>
-                    <label>Email: <input type="text" name="email" ref={register} /></label>
-                    <label>Phone: <input type="text" name="phone" ref={register} /></label>
-                    <label>Image url: <input type="text" name="image" ref={register} /></label>
-                    <label>Bootcamper: <input type="checkbox" name="isbootcamper" ref={register} /></label>
-                    <label>Industry: <input type="text" name="industry" ref={register} /></label>
-                    <label>Interest: <input type="text" name="interest" ref={register} /></label>
-                    {inputField.map((value) => {
-                        return value
-                    })}
-                    <input type="submit" />
+                    <div>
+                    <div><label>First name:</label><input type="text" name="firstname" ref={register} /></div>
+                    <div><label>Last name:</label><input type="text" name="surname" ref={register} /></div>
+                    <div><label>Address:</label><input type="text" name="address" ref={register} /></div>
+                    <div><label>Email:</label><input type="text" name="email" ref={register} /></div>
+                    <div><label>Phone:</label><input type="text" name="phone" ref={register} /></div>
+                    <div><label>Image url:</label><input type="text" name="image" ref={register} /></div>
+                    <div><label>Bootcamper:</label><input type="checkbox" name="isbootcamper" ref={register} /></div>
+                    <div><label>Industry:</label><input type="text" name="industry" ref={register} /></div>
+                    <div className="form-interest-field">
+                        <div ><label>Interest:</label><input type="text" name="interest" ref={register} /></div>
+                        {inputField.map((value) => {
+                            return value
+                        })}
+                    </div>
+                    </div>
+                    <div id="form-buttons">
+                        <button type="button" onClick={() => { addInterestField() }}>Add Additonal Interest</button>
+                        <input type="submit" />
+                        <button type="button" onClick={() => { window.location.reload() }}>Reset Form</button>
+                    </div>
                 </form>
-                <button onClick={() => { addInterestField() }}>Add Interest</button>
+
             </section>
         </div>
     )

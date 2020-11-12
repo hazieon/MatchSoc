@@ -12,19 +12,19 @@ function SearchPage({
 }) {
   
   return (
-    <div id="search-page">
+    <div className="sub-page-container">
       <header>
-        <h1 id="search-page-logo">People Search</h1>
+        <h1 className="sub-page-title">People Search</h1>
       </header>
-      <section className="main-section">
-        <article className="panel-left">
+      <section className="page-main-section">
+        <article className="search-panel-left">
           <SearchInput setInput={setInput} />
           <UserList
             userData={userData}
             returnSingleUserData={returnSingleUserData}
           />
         </article>
-        <article className="panel-right">
+        <article className="search-panel-right">
           <UserInfo userInfoData={userInfoData} />
         </article>
       </section>
