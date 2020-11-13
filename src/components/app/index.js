@@ -39,12 +39,9 @@ function App() {
       setUserData(data.payload);
     }
     refreshData()
-    console.log('app.js refreshData running')
     setReloadPageData(false);
   }, [reloadPageData])
 
-  console.log(reloadPageData)
-  console.log(userData)
 
   //use effect to get data based on search query
   useEffect(() => {
@@ -68,7 +65,7 @@ function App() {
   }
 
   function returnSingleUserData(userId) {
-    setUserInfoData(userData.find((value)=>value.id === userId))
+    setUserInfoData(userData.find((value) => value.id === userId))
   }
 
   function returnCompareSingleUserData(userId) {
@@ -105,6 +102,7 @@ function App() {
         <Switch>
           <Route path="/compare">
             <ComparePage
+              userData={userData}
               bootcamperData={bootcamperData}
               mentorData={mentorData}
               returnSingleUserData={returnCompareSingleUserData}

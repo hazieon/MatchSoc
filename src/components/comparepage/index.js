@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserListCompare from "../userlistcompare";
 import UserInfo from "../userinfo";
 import MatchScore from "../matchscore";
 import "./comparepage.css";
 
 function ComparePage({
-  bootcamperData,
-  mentorData,
+  userData,
   returnSingleUserData,
   bootcamperComparePanelData,
   mentorComparePanelData,
   setReloadPageData,
 }) {
-  const [compareListData, setCompareListData] = useState([...mentorData]);
+  const [compareListData, setCompareListData] = useState([...userData.filter((value)=> value.isbootcamper === false)]);
   const [displayUsers, setDisplayUsers] = useState(true);
   const [userViewChanged, setUserViewChanged] = useState(true)
 
@@ -30,7 +29,7 @@ function ComparePage({
         <div className="compare-panel-left">
           <button
             onClick={() => {
-              displayUsers ? switchData(bootcamperData) : switchData(mentorData);
+              displayUsers ? switchData(userData.filter((value)=> value.isbootcamper === true)) : switchData(userData.filter((value)=> value.isbootcamper === false));
             }}
           >
             {displayUsers ? "Show Bootcampers" : "Show Mentors"}
