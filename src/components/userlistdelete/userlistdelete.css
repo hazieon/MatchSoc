@@ -1,0 +1,39 @@
+#user-list-delete-component {
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: #777;
+    color: #fff;
+    font-weight: bold;
+    width: 230px;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+  
+#user-list-delete-component:hover {
+    background-color: #888;
+}
+  
+#user-list-delete-component:active {
+    background-color: #999;
+}
+
+#user-list-delete-component-container button {
+    border: none;
+    padding: 7px 11px;
+    border-radius: 20px;
+    background-color: #EA8696;
+    color: #fff;
+    outline: none;
+    margin-left: 10px;
+}
+
+#user-list-delete-component-container button:hover {
+    background-color: #f6b2bd;
+}
+
+#user-list-delete-component-container button:active {
+    background-color: #eb6279;
+}

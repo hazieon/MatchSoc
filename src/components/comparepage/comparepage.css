@@ -16,8 +16,12 @@
 }
 
 .compare-panel-left button:hover {
-    background-color: #67a6ee;
+    background-color: #709ed3;
 }
+
+.compare-panel-left button:active {
+    background-color: #365b85;
+  }
 
 .compare-panel-left {
     min-width: 350px; 
@@ -27,7 +31,12 @@
 
 }
 
-hr {
+#hra {
  border: 1px solid #4A90E2;   
- margin-top: 10px;
+ margin: 10px 0px;
 }
+
+#hrb {
+    border: 1px solid #4A90E2;   
+    margin: 0px 0px 10px 0px
+   }

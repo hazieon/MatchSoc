@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 
 function AddUserPage({ setReloadPageData }) {
     const [inputField, setInputField] = useState([])
-    const { register, handleSubmit, errors, reset } = useForm()
+    const { register, handleSubmit, reset } = useForm()
 
     function cleanUserData(data) {
         let userDataAsArray = Object.entries(data)
@@ -26,7 +26,8 @@ function AddUserPage({ setReloadPageData }) {
             image: image,
             isbootcamper: isbootcamper,
             industry: industry,
-            interests: interest
+            interests: interest,
+            matchedwith: 'not currently matched with a mentor'
         }
         return userData
     }
