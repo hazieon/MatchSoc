@@ -9,28 +9,42 @@ function App() {
   const [userData, setUserData] = useState([]);
   const [input, setInput] = useState(null);
   const [userInfoData, setUserInfoData] = useState("");
-
   const [reloadPageData, setReloadPageData] = useState(true);
-
   const [bootcamperData, setBootcamperData] = useState([]);
   const [mentorData, setMentorData] = useState([]);
-  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState(
-    ""
-  );
+  const [bootcamperComparePanelData, setBootcamperComparePanelData] = useState("");
   const [mentorComparePanelData, setMentorComparePanelData] = useState("");
 
   //use effect to GET all the page data
   useEffect(() => {
+    console.log('app.js getData running')
     async function getData() {
       let res = await fetch("http://localhost:5000/");
       let data = await res.json();
       setUserData(data.payload);
       setUserInfoData(data.payload[0]);
+      setBootcamperData(data.payload.filter((value) => value.isbootcamper === true))
+      setMentorData(data.payload.filter((value) => value.isbootcamper === false))
+      setBootcamperComparePanelData(data.payload.find((value) => value.isbootcamper === true));
+      setMentorComparePanelData(data.payload.find((value) => value.isbootcamper === false))
     }
     getData();
-    // setReloadPageData(false);
+    setReloadPageData(false);
+  }, []);
 
-  }, [reloadPageData]);
+  useEffect(() => {
+    async function refreshData() {
+      let res = await fetch("http://localhost:5000/");
+      let data = await res.json();
+      setUserData(data.payload);
+    }
+    refreshData()
+    console.log('app.js refreshData running')
+    setReloadPageData(false);
+  }, [reloadPageData])
+
+  console.log(reloadPageData)
+  console.log(userData)
 
   //use effect to get data based on search query
   useEffect(() => {
@@ -44,45 +58,21 @@ function App() {
     }
   }, [input]);
 
-  useEffect(() => {
-    async function getBootcamperData() {
-      let res = await fetch("http://localhost:5000/bootcampers");
-      let data = await res.json();
-      setBootcamperData(data.payload);
-      setBootcamperComparePanelData(data.payload[0]);
-    }
-    getBootcamperData();
-    // setReloadPageData(false);
-  }, [reloadPageData]);
-
-  useEffect(() => {
-    async function getMentorData() {
-      let res = await fetch("http://localhost:5000/mentors");
-      let data = await res.json();
-      setMentorData(data.payload);
-      setMentorComparePanelData(data.payload[0]);
-    }
-    getMentorData();
-    setReloadPageData(false);
-  }, [reloadPageData]);
-
   async function deleteUser(id) {
-    console.log(id);
     let res = await fetch(`http://localhost:5000/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
-
     let data = await res.json();
-    console.log(data);
     setReloadPageData(true);
   }
 
-  function returnSingleUserData(userObject) {
-    setUserInfoData(userObject);
+  function returnSingleUserData(userId) {
+    setUserInfoData(userData.find((value)=>value.id === userId))
   }
 
-  function returnCompareSingleUserData(userObject) {
+  function returnCompareSingleUserData(userId) {
+    const userObject = userData.find((value) => value.id === userId)
     if (userObject.isbootcamper === true) {
       setBootcamperComparePanelData(userObject);
     } else if (userObject.isbootcamper === false) {

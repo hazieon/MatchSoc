@@ -1,16 +1,18 @@
 import React from "react";
 import "./userlistdelete.css";
+import {v4 as uuid } from 'uuid'
+
 function UserListDelete({ userData, returnSingleUserData, deleteUser }) {
   return (
     <ul>
       {userData.map((value) => {
         return (
-          <div>
+          <div id="user-list-delete-component-container" key={uuid()}>
             <li
-              id="user-list-component"
-              key={value.id}
+              id="user-list-delete-component"
+              
               onClick={() => {
-                returnSingleUserData(value);
+                returnSingleUserData(value.id);
               }}
             >
               {value.firstname} {value.surname}

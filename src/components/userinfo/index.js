@@ -1,6 +1,7 @@
 import React from "react";
 import "./userinfo.css";
 function UserInfo({ userInfoData }) {
+
   const {
     firstname,
     surname,
@@ -11,6 +12,7 @@ function UserInfo({ userInfoData }) {
     industry,
     isbootcamper,
     interests = [],
+    matchedwith
   } = userInfoData;
 
   return (
@@ -54,6 +56,9 @@ function UserInfo({ userInfoData }) {
               })}
             </ul>
           </div>
+          <p>
+            <span className="info-text">Matched to:</span> {matchedwith}
+          </p>
         </div>
       </section>
     </div>
