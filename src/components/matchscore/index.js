@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./matchscore.css";
 
-function MatchScore({ bootcamperComparePanelData, mentorComparePanelData, setReloadPageData, userViewChanged }) {
-
-  const [compareUserScore, setCompareUserScore] = useState(0)
+function MatchScore({
+  bootcamperComparePanelData,
+  mentorComparePanelData,
+  setReloadPageData,
+  userViewChanged,
+}) {
+  const [compareUserScore, setCompareUserScore] = useState(0);
 
   async function saveMatch() {
-    await fetch("http://localhost:5000/match", {
+    await fetch("https://whereismail.herokuapp.com/match", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -15,7 +19,7 @@ function MatchScore({ bootcamperComparePanelData, mentorComparePanelData, setRel
         bootcamperName: `${bootcamperComparePanelData.firstname} ${bootcamperComparePanelData.surname}`,
         bootcamperId: bootcamperComparePanelData.id,
         mentorName: `${mentorComparePanelData.firstname} ${mentorComparePanelData.surname}`,
-        mentorId: mentorComparePanelData.id
+        mentorId: mentorComparePanelData.id,
       }),
     });
     setReloadPageData(true);
@@ -45,23 +49,23 @@ function MatchScore({ bootcamperComparePanelData, mentorComparePanelData, setRel
         matchedInterests.length === bootcamper.interests.length &&
         matchedInterests.length === mentor.interests.length
       ) {
-        setCompareUserScore(100)
+        setCompareUserScore(100);
       } else if (matchedInterests.length >= 4) {
-        setCompareUserScore(100)
+        setCompareUserScore(100);
       } else if (industryMatch === true && matchedInterests.length >= 2) {
-        setCompareUserScore(100)
+        setCompareUserScore(100);
       } else {
         if (score * 1.25 >= 100) {
-          setCompareUserScore(100)
-        } else setCompareUserScore(score * 1.25)
+          setCompareUserScore(100);
+        } else setCompareUserScore(score * 1.25);
       }
     }
-    compareUsers(bootcamperComparePanelData, mentorComparePanelData)
-  }, [userViewChanged])
+    compareUsers(bootcamperComparePanelData, mentorComparePanelData);
+  }, [userViewChanged]);
 
   return (
     <div id="matchscore-container">
-    <p>Matching Score</p>
+      <p>Matching Score</p>
       <p>{compareUserScore}%</p>
       <button onClick={() => saveMatch()}>assign mentor</button>
     </div>

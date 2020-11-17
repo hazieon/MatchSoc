@@ -14,7 +14,7 @@ function ComparePage({
 }) {
   const [compareListData, setCompareListData] = useState([...mentorData]);
   const [displayUsers, setDisplayUsers] = useState(true);
-  const [userViewChanged, setUserViewChanged] = useState(true)
+  const [userViewChanged, setUserViewChanged] = useState(true);
 
   function switchData(data) {
     setCompareListData(data);
@@ -30,7 +30,9 @@ function ComparePage({
         <div className="compare-panel-left">
           <button
             onClick={() => {
-              displayUsers ? switchData(bootcamperData) : switchData(mentorData);
+              displayUsers
+                ? switchData(bootcamperData)
+                : switchData(mentorData);
             }}
           >
             {displayUsers ? "Show Bootcampers" : "Show Mentors"}
@@ -45,19 +47,18 @@ function ComparePage({
 
         <article className="compare-panel-right">
           <UserInfo userInfoData={bootcamperComparePanelData} />
-          <hr id="hra"/>
+          <hr id="hra" />
           <article id="matchscore-container">
-          <MatchScore
-            bootcamperComparePanelData={bootcamperComparePanelData}
-            mentorComparePanelData={mentorComparePanelData}
-            setReloadPageData={setReloadPageData}
-            userViewChanged={userViewChanged}
-          />
-        </article>
-        <hr id="hrb"/>
+            <MatchScore
+              bootcamperComparePanelData={bootcamperComparePanelData}
+              mentorComparePanelData={mentorComparePanelData}
+              setReloadPageData={setReloadPageData}
+              userViewChanged={userViewChanged}
+            />
+          </article>
+          <hr id="hrb" />
           <UserInfo userInfoData={mentorComparePanelData} />
         </article>
-        
       </section>
     </div>
   );
